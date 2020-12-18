@@ -151,8 +151,7 @@ export async function handleRequest(request: Request): Promise<Response> {
 
         if ( validateBodyJson(parsedJson) === true ) {
             requestResponse = new Response( 
-                await processPaymentRequest(parsedJson['payment_info']),
-                { headers: corsHeader } );
+                await processPaymentRequest(parsedJson['payment_info']), { headers: corsHeader } );
                 
         } else {
             requestResponse = new Response( "Input data failed validation",
