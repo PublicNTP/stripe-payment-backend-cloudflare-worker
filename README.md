@@ -36,5 +36,16 @@ $ wrangler generate pntp-payment-backend-cloudflare https://github.com/Everlasti
 
 ```shell
 $ export CF_ACCOUNT_ID=[your CF account ID]
-$ export CF_ZONE_ID=[your zone ID]
 $ export CF_API_TOKEN=[Your API token]
+$ export CF_ZONE_ID=[your zone ID]
+```
+
+### Push secrets
+
+```shell
+$ wrangler secret put STRIPE_API_KEY_SECRET_TEST
+(Enter Stripe API key starting with "sk_test_", found at https://dashboard.stripe.com/test/apikeys)
+
+$ wrangler secret put STRIPE_API_KEY_SECRET_LIVE
+(Enter Stripe API key starting with "sk_live_", found at https://dashboard.stripe.com/apikeys)
+```
