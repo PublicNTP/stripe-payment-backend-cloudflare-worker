@@ -153,3 +153,4 @@ Send the following information to your new payment backend:
 
 * `amount` is in smallest unit of currency. See [Stripe's description](https://stripe.com/docs/api/charges/create#create_charge-amount) for more info, as an example 12.34 USD would be "1234," as the smallest currency unit in the US is the penny, so it's 1234 pennies
 * `currency` is the *lowercase* three-letter alphabetic code in [ISO 4217 currency codes](https://en.wikipedia.org/wiki/ISO_4217#Active_codes).
+* `source` is a valid payment token ID (starting with `tok_`) as returned from Stripe.js Elements
