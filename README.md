@@ -35,7 +35,6 @@ $ git clone https://github.com/PublicNTP/stripe-payment-backend-cloudflare-worke
 ### Create new Cloudflare API token
 
 1. Go to [API tokens](https://dash.cloudflare.com/profile/api-tokens) and click "Create Token"
-1. Click "Create Custom Token"
 1. Click the "Use Template" button for "Edit Cloudflare Workers"
 1. Under "Account Resources," select the proper account you want to deploy the worker under
 1. Under "Zone Resources," select the proper DNS zone
@@ -50,8 +49,9 @@ $ git clone https://github.com/PublicNTP/stripe-payment-backend-cloudflare-worke
 1. *Account ID*: Log into Cloudflare dashboard, click "Workers," and your Account ID will be displayed at the top left.
 
 ```shell
+$ wrangler config
+[enter the API token you just created]
 $ export CF_ACCOUNT_ID=[your CF account ID]
-$ export CF_API_TOKEN=[Your API token]
 ```
 
 #### Worker Name
@@ -91,19 +91,7 @@ $ wrangler subdomain [subdomain name]
 
 For example, `wrangler subdomain helloworld` will configure the Worker to be deployed to `https://helloworld.workers.dev`.
 
-
-### Push secrets
-
-```shell
-$ wrangler secret put STRIPE_API_KEY_SECRET_TEST
-(Enter Stripe API key starting with "sk_test_", found at https://dashboard.stripe.com/test/apikeys)
-
-$ wrangler secret put STRIPE_API_KEY_SECRET_LIVE
-(Enter Stripe API key starting with "sk_live_", found at https://dashboard.stripe.com/apikeys)
-```
-
-
-### Publish Worker
+### Create Worker
 
 ```shell
 $ wrangler publish
@@ -118,6 +106,17 @@ Warning: webpack's output filename is being renamed to worker.js because of requ
  [your route] => created
  [your worker's URL]
 ```
+
+### Push secrets to Worker
+
+```shell
+$ wrangler secret put STRIPE_API_KEY_SECRET_TEST
+(Enter Stripe API key starting with "sk_test_", found at https://dashboard.stripe.com/test/apikeys)
+
+$ wrangler secret put STRIPE_API_KEY_SECRET_LIVE
+(Enter Stripe API key starting with "sk_live_", found at https://dashboard.stripe.com/apikeys)
+```
+
 
 ### Test your payment backend in TEST mode
 
